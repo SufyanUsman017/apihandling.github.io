@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import axios from 'axios';
+import Card from 'react-bootstrap/Card'; 
+import CardGroup from 'react-bootstrap/CardGroup'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import GroupExample from './components/pics/Cards';
+export default function App() {
 
-function App() {
+  const [users,setUsers] = useState([]);
+  useEffect(()=>{
+    axios.get('https://jsonplaceholder.typicode.com/users').then((res)=>{
+      console.log(res.data);
+      setUsers(res.data)
+
+    }).catch((err)=>{
+      console.log(err)
+    })
+  },)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+    <div>
+      
+        <h1  className='bg-primary-subtle text-center'><i>Api integration</i></h1>
+        {
+           
+           users.map((element,index)=>{
+            return(
+              <div key={index}>
+              <GroupExample/>
+              
+
+                   
+              </div>
+              
+            )
+           })
+        }
+       
+
+      
+      
+    </div>
+  )
+}
