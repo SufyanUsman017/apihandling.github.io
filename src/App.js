@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import axios from 'axios'
 import Card from 'react-bootstrap/Card'; 
 import CardGroup from 'react-bootstrap/CardGroup'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,6 +29,7 @@ export default function App() {
            users.map((element,index)=>{
             return(
               <div key={index}>
+
               <GroupExample/>
               
 
